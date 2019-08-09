@@ -5,10 +5,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Trade CheckList</h5>
                     <ul class="list-group">
-                        <li class="list-group-item">Two previous tests of level on 30min (or greater) chart</li>
-                        <li class="list-group-item">At least one previous intraday rejection</li>
-                        <li class="list-group-item">Not a higher high or lower low</li>
-                        <li class="list-group-item" data-is-checked="false" @click="trade">Not entering opposite side of momentum</li>
+                        <li class="list-group-item checkListItem" @click="onClick">Two previous tests of level on 30min (or greater) chart</li>
+                        <li class="list-group-item checkListItem" @click="onClick">At least one previous intraday rejection</li>
+                        <li class="list-group-item checkListItem" @click="onClick">Not a higher high or lower low</li>
+                        <li class="list-group-item checkListItem" @click="onClick">Not entering opposite side of momentum</li>
                     </ul>
                 </div>
             </div>
@@ -31,16 +31,24 @@ export default {
     data () {
         return {
             imgUrl: 'https://via.placeholder.com/150',
-            isTrade: false,
+            doTrade: false,
         }
     },
     methods: {
-        trade: function (event) {
-            var dataCheck = event.target.getAttribute("data-is-checked");
+        onClick: function (event) {
+            event.target.classList.toggle('line-through');
 
-            event.target.setAttribute("data-is-checked", !!dataCheck);
+            let checkListItems = document.querySelectorAll('.checkListItem');
+            let changeState = true;
 
-            console.log(dataCheck)
+            checkListItems.forEach((item) => {
+                if (!item.classList.contains('line-through')) {
+                    changeState = false;
+                }
+            });
+
+            this.doTrade = changeState;
+
         }
     }
 }
@@ -49,5 +57,9 @@ export default {
 <style scoped>
     .line-through {
         text-decoration: line-through;
+    }
+
+    li {
+        cursor: pointer;
     }
 </style>
