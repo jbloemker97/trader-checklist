@@ -2,8 +2,10 @@
     <div class="row mt-5">
         <div class="col-lg-8">
             <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title text-center m-0">Trade CheckList</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Trade CheckList</h5>
                     <ul class="list-group">
                         <li class="list-group-item checkListItem" @click="onClick">Two previous tests of level on 30min (or greater) chart</li>
                         <li class="list-group-item checkListItem" @click="onClick">At least one previous intraday rejection</li>
@@ -16,8 +18,10 @@
 
         <div class="col-lg-4">
             <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title text-center m-0">Can I Enter A Trade?</h5>
+                </div>
                 <div class="card-body text-center">
-                    <h5 class="text-center">Can I Enter A Trade?</h5>
                     <img :src="imgUrl" class="rounded">
                 </div>
             </div>
@@ -52,6 +56,11 @@ export default {
 
             this.doTrade = changeState;
 
+            this.checkTrade();
+
+        },
+        checkTrade: function () {
+            this.imgUrl = this.doTrade ? '/assets/happiness.png' : '/assets/frown.png';
         }
     }
 }
@@ -74,5 +83,10 @@ export default {
     img {
         margin-top: 25px;
         max-width: 60%;
+    }
+
+    .card-header {
+        background-color: #006DB0;
+        color: #fff;
     }
 </style>
