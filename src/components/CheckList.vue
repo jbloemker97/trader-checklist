@@ -16,13 +16,15 @@
 
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="text-center">Can I Enter A Trade?</h5>
                     <img :src="imgUrl" class="rounded">
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
 </template>
 
 <script>
@@ -30,7 +32,8 @@ export default {
     name: 'CheckList',
     data () {
         return {
-            imgUrl: 'https://via.placeholder.com/150',
+            // imgUrl: 'https://via.placeholder.com/150',
+            imgUrl: '/assets/frown.png',
             doTrade: false,
         }
     },
@@ -61,5 +64,15 @@ export default {
 
     li {
         cursor: pointer;
+    }
+
+    li:hover {
+        background-color: #E1E1E1;
+        opacity: 0.8;
+    }
+
+    img {
+        margin-top: 25px;
+        max-width: 60%;
     }
 </style>
